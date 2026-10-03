@@ -1,6 +1,6 @@
 # EEGo Lab website
 
-A React website built with Vite and plain CSS. The site has a dark blue background and a near-black header with a small EEGo Lab logo at the top left. Its navigation includes `Home`, `Projects`, `Research and Presentations`, and `People`; on narrow screens, it opens from a Menu button. The Home page introduces the lab with a Science Expo photo, a research overview, a quote, and a group photo. The Projects page features EEGProc, the forthcoming We Can Read Faster project, Neuroadaptive Tetris, Muse Tetris, Mind Tune, and Brain as a System. The People page lists current members, main advisors, and past members. The Research and Presentations page features a forthcoming EEG emotion paper, the IEEE SMC 2026 BMI workshop presentation, the lab's iLRN 2026 award, and the UNC Science Expo demo.
+A React website built with Vite and plain CSS. The site has a dark blue background and a near-black header with a small EEGo Lab logo at the top left. Its navigation includes `Home`, `Projects`, `Research and Presentations`, and `People`; on narrow screens, it opens from a Menu button.
 
 No existing website source was available in this workspace when this project was created, so this is a new starting point rather than a migration of an existing site.
 
