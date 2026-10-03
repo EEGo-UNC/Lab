@@ -73,7 +73,7 @@ The footer uses the UNC Computer Science, UNC Psychology & Neuroscience, Columbi
 
 ## Deployment
 
-Run `npm ci` and `npm run build`, then publish the contents of `dist/` to a static web host. The default configuration assumes the site is served at the domain root. For a subdirectory such as `/eego/`, configure Vite's `base` option and update root-relative asset references as needed.
+Push to `main` to build and publish the site at <https://eego-unc.github.io/Lab/> through the GitHub Pages workflow. In the repository's **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**. The deployment build uses `/Lab/` as its base path; local development continues to use `/`.
 
 ## Version control and local files
 
