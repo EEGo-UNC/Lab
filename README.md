@@ -1,89 +1,70 @@
-# EEGo Lab website
+# EEGo Lab and EEGProc website
 
-A React website built with Vite and plain CSS. The site has a dark blue background and a near-black header with a small EEGo Lab logo at the top left. Its navigation includes `Home`, `Projects`, `Research and Presentations`, and `People`; on narrow screens, it opens from a Menu button.
+The site for the [EEGo Lab](https://eego-unc.github.io/Lab/) at UNC and its open-source library [EEGProc](https://github.com/EEGo-UNC/EEGProc), served at <https://eego-unc.github.io/Lab/>. It keeps the lab's pages, navy theme and photos, adds scroll and entrance animation to every page, and adds an EEGProc page that walks an EEG signal from raw recording to an explained prediction.
 
-No existing website source was available in this workspace when this project was created, so this is a new starting point rather than a migration of an existing site.
-
-## Requirements
-
-- Node.js 24 (the version family in `.nvmrc`)
-- npm, included with Node.js
-
-If you use nvm, run `nvm install` and `nvm use` in this directory.
+Plain HTML, CSS and ES modules. GSAP with ScrollTrigger, Lenis and Prism load from CDNs. There is no build step.
 
 ## Run locally
 
-From this directory:
-
-```sh
-npm ci
-npm run dev
+```bash
+python3 -m http.server 8001 --bind 127.0.0.1
 ```
 
-Open the local URL shown in the terminal (normally <http://localhost:5173>). Changes to the source update the page automatically.
+Open <http://localhost:8001>. Add `?motion=reduced` to the URL to preview the reduced-motion version, which shows every page and figure in its final state.
 
-## Build and preview
+## Pages
 
-```sh
-npm run build
-npm run preview
+The site is one HTML file with five pages, switched by the URL hash like the lab site:
+
+| Hash | Page |
+|---|---|
+| `#home` | Welcome, Science Expo photo, quote, lab description, featured EEGProc and research cards, group photo |
+| `#eegproc` | The library: pipeline, model, features, datasets, validation, counterfactuals, what changed in 2.0.0, layout, quickstart, contributing, citing, and EEGProc's own footer links. Wide screens get a clickable "On this page" sidebar |
+| `#projects` | The six lab projects, each with its picture on the left |
+| `#research` | Research and presentations, including the forthcoming counterfactual paper (`#publications` also works) |
+| `#people` | Members, main advisors, past members |
+
+A hash that names an element inside a page, such as `#datasets` or `#quickstart`, opens that page and scrolls to the element. Back and forward work. Each page's script returns a cleanup that runs when the reader leaves, so ScrollTrigger pins only exist for the page on screen. Images on pages other than Home load the first time their page opens.
+
+## Layout
+
+```
+index.html            header, the five pages, the lab footer (partner logos), metadata, JSON-LD
+css/styles.css        lab tokens (navy default, light theme on the toggle), lab components, EEGProc figures
+js/main.js            router and page transitions, header, nav indicator, theme, copy buttons, tabs, smooth scroll
+js/lib/motion.js      shared animation helpers: split text, intro, reveals, parallax, wipes, and entries for picture-and-text cards
+js/pages/home.js      Home: waveform backdrop, title, photo, quote that lights up as it scrolls, featured cards, group photo
+js/pages/eegproc.js   EEGProc: starts the figure modules below and the text reveals
+js/pages/lab.js       Projects and Research (shared card entrance) and People animations
+js/lib/signal.js      seeded synthetic EEG, SVG helpers, scalp geometry, color ramps
+js/waveform.js        EEG waveform canvases (Home backdrop, featured card, EEGProc masthead)
+js/pipeline.js        pinned five-step pipeline
+js/windowing.js       trial-safe windowing
+js/loso.js            leave-one-subject-out grid
+js/counterfactual.js  counterfactual path and scalp topographies
+js/converter.js       dataset converter
+js/changes.js         2.0.0: modules growing from two to six, and the timeline of changes
+js/toc.js             EEGProc's "On this page" sidebar (wide screens): highlights the section being read
+js/interactive.js     valence-arousal plane, gauges, featurization explorer, package tree
+assets/               EEGProc images from docs/source/_static, logo variants, favicons, social card
+assets/lab/           lab photos, portraits, project images and partner logos, resized to WebP
+projects/             the Neuroadaptive Tetris valence-arousal PDF
+publications/         the IEEE SMC 2026 preprint PDF
 ```
 
-The production build is written to `dist/`. The preview command serves that build locally (normally <http://localhost:4173>); it is not a production server. Re-run the build after source changes before previewing.
+Each diagram is drawn in its finished state first, and the scroll timelines animate toward it. If motion is reduced or the CDN scripts fail to load, every page still shows its complete content.
 
-## Project structure
+## Deploy
 
-```text
-public/
-  columbia-cumc.webp  Supplied transparent Columbia medical center logo
-  eego.png          Supplied EEGo Lab logo
-  emotiv.png        Supplied transparent Emotiv logo
-  unc-computer-science.png  Supplied UNC Computer Science logo
-  unc-psychology-neuroscience.png  Transparent UNC Psychology & Neuroscience logo
-  favicon.svg       Site icon; add other static assets here
-  home/             Introduction and group photos
-  people/           Supplied portraits for Vitor, Amit, Yashasree, Eduarda, Richard, Rosie, and Raghav
-  projects/        Project logos and images, including We Can Read Faster
-  publications/    Supplied iLRN and UNC Science Expo photos, IEEE SMC diagram and preprint PDF
-src/
-  App.jsx           Main page and page content
-  PeoplePage.jsx    People groups and profile cards
-  ProjectsPage.jsx  Projects page
-  PublicationsPage.jsx  Research and Presentations page
-  main.jsx          React entry point
-  styles.css        Global styles and responsive layout
-index.html          HTML shell, title, and metadata
-vite.config.js      Vite and React configuration
-package.json        Dependencies and development commands
-package-lock.json   Locked dependency versions; commit this file
-.nvmrc              Node.js version family
-.gitignore          Files excluded from version control
-```
+Every push to `main` runs the GitHub Pages workflow, which copies the site files as they are (there is no build step) and publishes them. All paths are relative, so the same files also work from any other Pages address.
 
-## Edit the site
+## Notes
 
-- Update the homepage in `src/App.jsx`, projects in `src/ProjectsPage.jsx`, publications and awards in `src/PublicationsPage.jsx`, and people in `src/PeoplePage.jsx`; styles live in `src/styles.css`.
-- Add reusable UI components under `src/components/` as the site grows.
-- Set the browser title and description in `index.html`.
-- Put static assets in `public/` and reference them from the site root, such as `/favicon.svg`. Assets imported by React components can live under `src/assets/`.
+- `index.html` uses `https://eego-unc.github.io/Lab/` for the canonical link, `og:url`, `og:image` and JSON-LD `url`.
+- The status badge on the EEGProc page shows EEGProc's Release workflow on `main`, which runs the tests on Python 3.10 to 3.13 before publishing.
+- The two PDFs keep the paths they had on the earlier version of the site, so existing links to them still work.
+- Mind Tune has no public repository under EEGo-UNC, so its card has no code link.
 
-This starter uses JavaScript and JSX. Navigation uses URL hashes (`#home`, `#projects`, `#research`, and `#people`) and supports direct links and browser Back/Forward without a routing dependency or special server configuration. Older `#publications` links still open Research and Presentations. It has no backend or external service configuration.
+## Content
 
-The footer uses the UNC Computer Science, UNC Psychology & Neuroscience, Columbia University Medical Center, and Emotiv logos.
-
-## Deployment
-
-Push to `main` to build and publish the site at <https://eego-unc.github.io/Lab/> through the GitHub Pages workflow. In the repository's **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**. The deployment build uses `/Lab/` as its base path; local development continues to use `/`.
-
-## Version control and local files
-
-`.gitignore` excludes dependencies, build output, local environment files, logs, editor files, and the `sources/` reference directory. Keep `package-lock.json` in version control so `npm ci` installs the same dependency versions.
-
-The workspace's `sources/` directory is reserved for read-only synced ChatGPT project references. Do not edit, move, rename, or delete those files; put application code in `src/` instead. This starter does not import or publish reference files.
-
-If environment variables are added later, document their names in a committed `.env.example`. Never put secrets in client-side code or `VITE_` variables: those values are exposed to visitors in the browser bundle.
-
-## References
-
-- [React documentation](https://react.dev/learn)
-- [Vite documentation](https://vite.dev/guide/)
+Lab text, people, projects, research and photos come from the [EEGo Lab site](https://eego-unc.github.io/Lab/) and its source repository, `EEGo-UNC/Lab`. EEGProc facts come from the EEGProc repository (README, CHANGELOG, CITATION.cff, pyproject.toml and the docs). The code samples match the README blocks that `src/tests/test_docs_examples.py` executes. Every signal, score and scalp map on the EEGProc page is synthetic and labeled as illustrative.
