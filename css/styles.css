@@ -627,8 +627,9 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
 .logo-card--computer-science img { top: 0; left: 0; height: 1em; }
 .logo-card--psychology-neuroscience { width: 3.209em; }
 .logo-card--psychology-neuroscience img { top: -0.075em; left: 0; height: 1.15em; }
-.logo-card--columbia { width: 4.527em; }
-.logo-card--columbia img { top: 0.275em; left: 0.091em; height: 0.659em; filter: brightness(1.6); }
+/* Keep Columbia at 80% of UNC's visible height, compensating for transparent edges. */
+.logo-card--columbia { width: 5.3248em; }
+.logo-card--columbia img { top: 0.1em; left: -0.0088em; height: 0.8088em; filter: brightness(1.6); }
 .logo-card--emotiv { width: 3.658em; }
 .logo-card--emotiv img { top: -0.811em; left: -0.3em; height: 2.835em; filter: brightness(0) invert(1); }
 [data-theme="light"] .logo-card--columbia img { filter: none; }
