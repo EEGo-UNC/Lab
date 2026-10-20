@@ -63,7 +63,7 @@ Every push to `main` runs the GitHub Pages workflow, which copies the site files
 - `index.html` uses `https://eego-unc.github.io/Lab/` for the canonical link, `og:url`, `og:image` and JSON-LD `url`.
 - The status badge on the EEGProc page shows EEGProc's Release workflow on `main`, which runs the tests on Python 3.10 to 3.13 before publishing.
 - The two PDFs keep the paths they had on the earlier version of the site, so existing links to them still work.
-- Mind Tune has no public repository under EEGo-UNC, so its card has no code link.
+- The Mind Tune project card links to its [GitHub repository](https://github.com/EEGo-UNC/MindTune).
 
 ## Content
 
