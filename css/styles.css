@@ -744,6 +744,7 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
 .eeg-hero-logo { line-height: 0; }
 .eeg-hero-logo img { width: min(460px, 80vw); height: auto; margin-inline: auto; }
 .eeg-tagline { max-width: 40rem; margin: 1.4rem auto 0; font-size: clamp(1.3rem, 1rem + 1.4vw, 1.9rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
+.eeg-byline { margin-top: 0.75rem; color: var(--ink-2); font-size: 0.95rem; }
 .eeg-abstract { max-width: 46rem; margin: 1rem auto 0; color: var(--ink-body); font-size: 1.08rem; line-height: 1.65; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 1.6rem; align-items: center; }
 .hero-extra { margin-top: 0.9rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; color: var(--ink-2); font-size: 0.95rem; }
