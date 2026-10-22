@@ -18,6 +18,7 @@
   --rule: #24405d;
   --rule-strong: #3a5f83;
   --accent: #7ac3ff;
+  --lab-blue: #62b0f5;
   --link: #7ac3ff;
   --link-hover: #c6e7ff;
   --accent-ink: #041426;
@@ -83,6 +84,7 @@
   --rule: #d3dde8;
   --rule-strong: #a9b9ca;
   --accent: #1f5aa6;
+  --lab-blue: #17449b;
   --link: #1f5aa6;
   --link-hover: #143f78;
   --accent-ink: #ffffff;
@@ -375,7 +377,7 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
   -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 25%, transparent 80%);
   mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 25%, transparent 80%);
 }
-.page .welcome-title { font-size: clamp(2.8rem, 7.5vw, 5.75rem); line-height: 1.04; }
+.page .welcome-title { color: var(--lab-blue); font-size: clamp(2.8rem, 7.5vw, 5.75rem); line-height: 1.04; }
 .introduction {
   max-width: 48rem;
   margin: 0.85rem auto 0;
