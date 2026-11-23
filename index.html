@@ -35,12 +35,12 @@
   <link rel="stylesheet" href="css/styles.css">
 
   <script>
-    // Apply the saved theme and motion preference before first paint. Navy is the default.
+    // Apply the saved lab theme and motion preference before first paint. Navy is the default.
     (function () {
       var root = document.documentElement;
       root.classList.add("js");
       try {
-        if (localStorage.getItem("eegproc-theme") === "light") root.setAttribute("data-theme", "light");
+        if (localStorage.getItem("eego-lab-theme") === "light") root.setAttribute("data-theme", "light");
       } catch (e) {}
       var forced = /[?&]motion=reduced\b/.test(location.search);
       if (forced || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
@@ -135,7 +135,10 @@
           <canvas class="welcome-wave" aria-hidden="true"></canvas>
           <h1 id="home-title" class="welcome-title" tabindex="-1" data-split="chars">EEGo Lab</h1>
           <p class="introduction" data-intro>A student research group advancing wearable brain-computer interfaces (BCI) and machine learning (ML)</p>
-          <a class="welcome-github" href="https://github.com/EEGo-UNC" data-intro>EEGo Lab on GitHub ↗</a>
+          <div class="welcome-links">
+            <a href="https://github.com/EEGo-UNC" data-intro>EEGo Lab on GitHub ↗</a>
+            <a href="https://www.linkedin.com/company/eego-lab/" data-intro>EEGo Lab on LinkedIn ↗</a>
+          </div>
         </div>
 
         <figure class="welcome-photo">
@@ -1160,7 +1163,7 @@ result = optimizer.optimize(trial[None, ...], target_class=1)</code></pre>
           </article>
           <article class="person-card">
             <div class="person-portrait">
-              <div class="portrait-placeholder" aria-hidden="true"><span class="portrait-initials">GM</span><span class="portrait-status">Photo coming soon</span></div>
+              <img data-src="assets/lab/gabriel-matos.jpeg" alt="Portrait of Gabriel Matos" loading="lazy" decoding="async">
             </div>
             <div class="person-info">
               <h3>Gabriel Matos</h3>
