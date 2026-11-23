@@ -385,7 +385,15 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
   font-size: clamp(1.05rem, 2.2vw, 1.45rem);
   line-height: 1.45;
 }
-.welcome-github { display: inline-block; margin-top: 1rem; font-size: 0.95rem; font-weight: 600; }
+.welcome-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
 .welcome-photo {
   width: min(100%, 64rem);
   margin: clamp(1.75rem, 4vw, 3rem) auto 0;

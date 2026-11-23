@@ -185,7 +185,7 @@ function setupTheme() {
   button.addEventListener("click", () => {
     const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
     apply(next);
-    try { localStorage.setItem("eegproc-theme", next); } catch (e) { /* storage unavailable */ }
+    try { localStorage.setItem("eego-lab-theme", next); } catch (e) { /* storage unavailable */ }
   });
 }
 
