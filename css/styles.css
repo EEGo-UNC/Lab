@@ -394,7 +394,8 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
   font-size: 0.95rem;
   font-weight: 600;
 }
-.lab-photo {
+.welcome-photo {
+  width: min(100%, 64rem);
   margin: clamp(1.75rem, 4vw, 3rem) auto 0;
   overflow: hidden;
   border: 1px solid var(--photo-border);
