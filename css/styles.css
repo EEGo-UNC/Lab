@@ -402,9 +402,8 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
   border-radius: 0.75rem;
   background: var(--figure);
 }
-.welcome-photo img { display: block; width: 100%; height: auto; filter: var(--photo-filter); }
-.welcome-photo--portrait { position: relative; width: min(100%, 34rem); aspect-ratio: 3 / 2; }
-.welcome-photo--portrait img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: center 68%; }
+.lab-photo img { display: block; width: 100%; height: auto; filter: var(--photo-filter); }
+.welcome-photo { width: min(80%, 51.2rem); }
 .welcome-quote {
   max-width: 48rem;
   margin: clamp(1.75rem, 4vw, 2.5rem) auto 0;
@@ -540,6 +539,8 @@ main { padding-top: var(--header-tall); overflow-x: clip; }
 
 /* ---------- People ---------- */
 
+.people-group-photo { position: relative; width: min(100%, 34rem); aspect-ratio: 3 / 2; }
+.people-group-photo img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: center 68%; }
 .people-section + .people-section { margin-top: clamp(3rem, 6vw, 5rem); }
 .people-section h2 {
   position: relative;
