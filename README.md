@@ -18,11 +18,11 @@ The site is one HTML file with five pages, switched by the URL hash like the lab
 
 | Hash | Page |
 |---|---|
-| `#home` | Welcome, Science Expo photo, quote, lab description, featured EEGProc and research cards, group photo |
+| `#home` | Welcome, featured preprint and EEGProc cards, quote, lab description, Science Expo photo |
 | `#eegproc` | The library: pipeline, model, features, datasets, validation, counterfactuals, what changed in 2.0.0, layout, quickstart, contributing, citing, and EEGProc's own footer links. Wide screens get a clickable "On this page" sidebar |
 | `#projects` | The six lab projects, each with its picture on the left |
 | `#research` | Research and presentations, including the forthcoming counterfactual paper (`#publications` also works) |
-| `#people` | Members, main advisors, past members |
+| `#people` | Members, main advisors, past members, group photo |
 
 A hash that names an element inside a page, such as `#datasets` or `#quickstart`, opens that page and scrolls to the element. Back and forward work. Each page's script returns a cleanup that runs when the reader leaves, so ScrollTrigger pins only exist for the page on screen. Images on pages other than Home load the first time their page opens.
 
@@ -33,7 +33,7 @@ index.html            header, the five pages, the lab footer (partner logos), me
 css/styles.css        lab tokens (navy default, light theme on the toggle), lab components, EEGProc figures
 js/main.js            router and page transitions, header, nav indicator, theme, copy buttons, tabs, smooth scroll
 js/lib/motion.js      shared animation helpers: split text, intro, reveals, parallax, wipes, and entries for picture-and-text cards
-js/pages/home.js      Home: waveform backdrop, title, photo, quote that lights up as it scrolls, featured cards, group photo
+js/pages/home.js      Home: waveform backdrop, title, featured cards, quote that lights up as it scrolls, Science Expo photo
 js/pages/eegproc.js   EEGProc: starts the figure modules below and the text reveals
 js/pages/lab.js       Projects and Research (shared card entrance) and People animations
 js/lib/signal.js      seeded synthetic EEG, SVG helpers, scalp geometry, color ramps

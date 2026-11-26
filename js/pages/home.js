@@ -1,7 +1,6 @@
-// Home: the lab welcome with a live EEG backdrop, a rising hero photo, a quote that lights up
-// word by word, the featured EEGProc and research cards, and the group photo.
+// Home: the lab welcome with a live EEG backdrop, the featured cards, and the Science Expo photo.
 import { initWaveform } from "../waveform.js";
-import { intro, reveals, parallax, splitText, entries, wipes } from "../lib/motion.js";
+import { intro, reveals, parallax, splitText, entries } from "../lib/motion.js";
 
 export function initHome({ gsap, ScrollTrigger, reduced, page }) {
   initWaveform(page.querySelector(".welcome-wave"), {
@@ -17,10 +16,6 @@ export function initHome({ gsap, ScrollTrigger, reduced, page }) {
   const ctx = gsap.context(() => {
     intro(page, gsap);
     parallax(page, gsap);
-
-    // The hero photo rises in with the title (no clip, so it paints at full size right away).
-    const photo = page.querySelector(".welcome-photo:not(.welcome-photo--portrait)");
-    if (photo) gsap.fromTo(photo, { y: 40, opacity: 0.35 }, { y: 0, opacity: 1, duration: 1.3, ease: "expo.out", delay: 0.25, clearProps: "transform" });
     reveals(page, gsap, ScrollTrigger);
 
     const quote = page.querySelector("[data-words]");
@@ -38,10 +33,7 @@ export function initHome({ gsap, ScrollTrigger, reduced, page }) {
       });
     }
 
-    // The featured research card enters like the Research page; the group photo opens straight
-    // from its center so it settles square with the cards above it.
     entries(page, gsap);
-    wipes(page, gsap);
   }, page);
   return () => {
     ctx.revert();

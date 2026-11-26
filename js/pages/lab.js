@@ -1,5 +1,5 @@
 // Projects, Research and Presentations, and People: the lab's pages with entrance and scroll motion.
-import { intro, entries } from "../lib/motion.js";
+import { intro, entries, wipes } from "../lib/motion.js";
 
 function withContext(gsap, reduced, page, build) {
   if (reduced || !gsap) return () => {};
@@ -45,5 +45,6 @@ export function initPeople({ gsap, ScrollTrigger, reduced, page }) {
         });
       });
     });
+    wipes(page, gsap);
   });
 }

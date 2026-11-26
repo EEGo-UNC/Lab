@@ -31,16 +31,15 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400..700&amp;display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400..700&amp;display=swap"></noscript>
-  <link rel="preload" as="image" href="assets/lab/science-expo-1600.webp" imagesrcset="assets/lab/science-expo-960.webp 960w, assets/lab/science-expo-1600.webp 1600w" imagesizes="(max-width: 1100px) 92vw, 1024px" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
 
   <script>
-    // Apply the saved theme and motion preference before first paint. Navy is the default.
+    // Apply the saved lab theme and motion preference before first paint. Navy is the default.
     (function () {
       var root = document.documentElement;
       root.classList.add("js");
       try {
-        if (localStorage.getItem("eegproc-theme") === "light") root.setAttribute("data-theme", "light");
+        if (localStorage.getItem("eego-lab-theme") === "light") root.setAttribute("data-theme", "light");
       } catch (e) {}
       var forced = /[?&]motion=reduced\b/.test(location.search);
       if (forced || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
@@ -135,20 +134,26 @@
           <canvas class="welcome-wave" aria-hidden="true"></canvas>
           <h1 id="home-title" class="welcome-title" tabindex="-1" data-split="chars">EEGo Lab</h1>
           <p class="introduction" data-intro>A student research group advancing wearable brain-computer interfaces (BCI) and machine learning (ML)</p>
-          <a class="welcome-github" href="https://github.com/EEGo-UNC" data-intro>EEGo Lab on GitHub ↗</a>
+          <div class="welcome-links">
+            <a href="https://github.com/EEGo-UNC" data-intro>EEGo Lab on GitHub ↗</a>
+            <a href="https://www.linkedin.com/company/eego-lab/" data-intro>EEGo Lab on LinkedIn ↗</a>
+          </div>
         </div>
 
-        <figure class="welcome-photo">
-          <img src="assets/lab/science-expo-1600.webp" srcset="assets/lab/science-expo-960.webp 960w, assets/lab/science-expo-1600.webp 1600w" sizes="(max-width: 1100px) 92vw, 1024px" alt="EEGo Lab researchers demonstrating a wearable brain-computer interface at the UNC Science Expo" width="1600" height="1067" fetchpriority="high" data-parallax>
-        </figure>
-
-        <blockquote class="welcome-quote" data-words>“What if software could adapt to how we think and feel?”</blockquote>
-
-        <div class="welcome-description" data-reveal-group>
-          <p>EEGo Lab is a student-led research group that spans the University of North Carolina at Chapel Hill and Columbia University exploring wearable EEG, brain-computer interfaces, and machine learning for neuroadaptive applications.</p>
-          <p>Our work focuses on using real-time brain signals to study cognitive and emotional states, improve user experimentation, and build adaptive systems for education, VR, and interactive software.</p>
-          <p>Supported by the UNC Graduate Fund, UNC Honors Undergraduate Fund, and Emotiv Inc.</p>
-        </div>
+        <article class="publication-entry featured featured--research" data-entry>
+          <div class="publication-entry-photo publication-entry-photo--diagram" data-wipe>
+            <img src="assets/lab/eeg-emotion-counterfactuals.webp" alt="Six EEG scalp maps comparing theta, alpha, and beta patterns of emotion" width="1200" height="731" loading="lazy" decoding="async">
+          </div>
+          <div class="publication-entry-content">
+            <p class="publication-entry-label">Featured preprint</p>
+            <h2>Explaining Deep EEG Emotion Classifiers with Central Counterfactuals</h2>
+            <p class="publication-entry-byline">Vitor Inserra, Amit Chalmeti, Pranav Mucharla, Yashasree Gadipalli, Neha Panda, Sai Nagamalla, Gabriel Matos, Rosie Dutt, Raghavendra Pradyumna Pothukuchi, Richard L. Marks</p>
+            <div class="publication-entry-links">
+              <a href="publications/inserra_explaining_eeg.pdf">View preprint (PDF)</a>
+              <a href="#research">All research and presentations</a>
+            </div>
+          </div>
+        </article>
 
         <article class="publication-entry featured" data-reveal>
           <a class="featured-visual" href="#eegproc" aria-label="Explore EEGProc">
@@ -173,26 +178,16 @@
           </div>
         </article>
 
-        <article class="publication-entry featured featured--research" data-entry>
-          <div class="publication-entry-photo publication-entry-photo--diagram" data-wipe>
-            <img src="assets/lab/smc-neurofeedback-policy.webp" alt="Neurofeedback policy diagram connecting an RSVP application, wearable EEG, machine learning, and comprehension-state feedback" width="1200" height="415" loading="lazy" decoding="async">
-          </div>
-          <div class="publication-entry-content">
-            <p class="publication-entry-label">Featured research</p>
-            <h2>EEG Cognitive State Machine: A Modular Framework for Design-Time Experimentation and Run-Time Neurofeedback in Puzzle Games</h2>
-            <p class="publication-entry-byline">Vitor Inserra and Richard Marks</p>
-            <p class="publication-entry-status">Forthcoming in the IEEE SMC 2026 conference proceedings on IEEE Xplore.</p>
-            <div class="publication-entry-links">
-              <a href="https://bci-lab.hochschule-rhein-waal.de/BMI2026/SMC2026-2600.mp4">Watch presentation</a>
-              <a href="publications/eeg-cognitive-state-machine-preprint.pdf">View preprint (PDF)</a>
-              <a href="#research">All research and presentations</a>
-            </div>
-            <p class="publication-entry-venue"><strong>Conference and workshop:</strong> 2026 IEEE International Conference on Systems, Man, and Cybernetics · 16th IEEE SMC Workshop on Brain-Machine Interface (BMI) Systems</p>
-          </div>
-        </article>
+        <blockquote class="welcome-quote" data-words>“What if software could adapt to how we think and feel?”</blockquote>
 
-        <figure class="welcome-photo welcome-photo--portrait" data-wipe>
-          <img src="assets/lab/lab-group-photo.webp" alt="Four EEGo Lab members together in an instant photograph" width="1000" height="1333" loading="lazy" decoding="async">
+        <div class="welcome-description" data-reveal-group>
+          <p>EEGo Lab is a student-led research group that spans the University of North Carolina at Chapel Hill and Columbia University exploring wearable EEG, brain-computer interfaces, and machine learning for neuroadaptive applications.</p>
+          <p>Our work focuses on using real-time brain signals to study cognitive and emotional states, improve user experimentation, and build adaptive systems for education, VR, and interactive software.</p>
+          <p>Supported by the UNC Graduate Fund, UNC Honors Undergraduate Fund, and Emotiv Inc.</p>
+        </div>
+
+        <figure class="lab-photo welcome-photo" data-reveal>
+          <img src="assets/lab/science-expo-1600.webp" srcset="assets/lab/science-expo-960.webp 960w, assets/lab/science-expo-1600.webp 1600w" sizes="min(80vw - 2.4rem, 51.2rem)" alt="EEGo Lab researchers demonstrating a wearable brain-computer interface at the UNC Science Expo" width="1600" height="1067" loading="lazy" decoding="async" data-parallax>
         </figure>
       </div>
     </section>
@@ -1024,10 +1019,12 @@ result = optimizer.optimize(trial[None, ...], target_class=1)</code></pre>
           <img data-src="assets/lab/eeg-emotion-counterfactuals.webp" alt="Six EEG scalp maps comparing theta, alpha, and beta patterns of emotion" width="1200" height="731" loading="lazy" decoding="async">
         </div>
         <div class="publication-entry-content">
-          <p class="publication-entry-label">Research paper</p>
-          <h2>Explaining Typical Subject-Invariant EEG Patterns of Emotion Through Deep Learning Counterfactuals</h2>
+          <p class="publication-entry-label">Preprint</p>
+          <h2>Explaining Deep EEG Emotion Classifiers with Central Counterfactuals</h2>
           <p class="publication-entry-byline">Vitor Inserra, Amit Chalmeti, Pranav Mucharla, Yashasree Gadipalli, Neha Panda, Sai Nagamalla, Gabriel Matos, Rosie Dutt, Raghavendra Pradyumna Pothukuchi, Richard L. Marks</p>
-          <p class="publication-entry-status">Forthcoming</p>
+          <div class="publication-entry-links">
+            <a href="publications/inserra_explaining_eeg.pdf">View preprint (PDF)</a>
+          </div>
         </div>
       </article>
 
@@ -1160,7 +1157,7 @@ result = optimizer.optimize(trial[None, ...], target_class=1)</code></pre>
           </article>
           <article class="person-card">
             <div class="person-portrait">
-              <div class="portrait-placeholder" aria-hidden="true"><span class="portrait-initials">GM</span><span class="portrait-status">Photo coming soon</span></div>
+              <img data-src="assets/lab/gabriel-matos.jpeg" alt="Portrait of Gabriel Matos" loading="lazy" decoding="async">
             </div>
             <div class="person-info">
               <h3>Gabriel Matos</h3>
@@ -1273,6 +1270,9 @@ result = optimizer.optimize(trial[None, ...], target_class=1)</code></pre>
           </article>
         </div>
       </section>
+      <figure class="lab-photo people-group-photo" data-wipe>
+        <img data-src="assets/lab/lab-group-photo.webp" alt="Four EEGo Lab members together in an instant photograph" width="1000" height="1333" loading="lazy" decoding="async">
+      </figure>
     </section>
   </main>
 
